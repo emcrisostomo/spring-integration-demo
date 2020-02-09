@@ -1,11 +1,23 @@
 version: '3.0'
 
 services:
+  consumer:
+    image: spring-integration-rabbitmq-consumer-demo:0.0.1-SNAPSHOT
+    depends_on:
+      - cola-mutuas
+
+  producer:
+    image: spring-integration-rabbitmq-producer-demo:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8080"
+    depends_on:
+      - cola-mutuas
+
   cola-mutuas:
     image: rabbitmq:management
     ports:
-    - "5672:5672"
-    - "15672:15672"
+      - "5672:5672"
+      - "15672:15672"
     environment:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: accenture
