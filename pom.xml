@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.accenture</groupId>
-    <artifactId>spring-integration-demo</artifactId>
+    <artifactId>spring-integration-rabbitmq-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     
-    <name>spring-integration-demo</name>
+    <name>spring-integration-rabbitmq-demo</name>
     <description>Demo project for Spring Integration</description>
 
     <properties>
@@ -16,7 +16,8 @@
     </properties>
 
     <modules>
-        <module>spring-integration-rabbitmq-demo</module>
+        <module>spring-integration-demo</module>
+        <module>spring-integration-rabbitmq-producer-demo</module>
         <module>spring-integration-rabbitmq-consumer-demo</module>
     </modules>
 </project>
