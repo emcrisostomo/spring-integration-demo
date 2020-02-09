@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/spring-integration-demo.iml" filepath="$PROJECT_DIR$/spring-integration-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-integration-rabbitmq-consumer-demo/spring-integration-rabbitmq-consumer-demo.iml" filepath="$PROJECT_DIR$/spring-integration-rabbitmq-consumer-demo/spring-integration-rabbitmq-consumer-demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/spring-integration-rabbitmq-demo/spring-integration-rabbitmq-demo.iml" filepath="$PROJECT_DIR$/spring-integration-rabbitmq-demo/spring-integration-rabbitmq-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-integration-rabbitmq-demo/spring-integration-rabbitmq-producer-demo.iml" filepath="$PROJECT_DIR$/spring-integration-rabbitmq-demo/spring-integration-rabbitmq-producer-demo.iml" />
     </modules>
   </component>
 </project>
