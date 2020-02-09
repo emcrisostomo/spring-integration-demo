@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.accenture</groupId>
-    <artifactId>spring-integration-rabbitmq-demo</artifactId>
+    <artifactId>spring-integration-rabbitmq-producer-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-integration-rabbitmq-demo</name>
-    <description>Demo project for Spring Boot</description>
+    <name>spring-integration-rabbitmq-producer-demo</name>
+    <description>Demo project for Spring Integration - RabbitMQ producer</description>
 
     <properties>
         <java.version>1.8</java.version>
