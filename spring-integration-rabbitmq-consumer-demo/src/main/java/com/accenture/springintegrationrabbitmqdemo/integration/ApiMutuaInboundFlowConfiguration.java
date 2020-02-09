@@ -1,9 +1,7 @@
 package com.accenture.springintegrationrabbitmqdemo.integration;
 
-import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.DirectMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,19 +21,11 @@ public class ApiMutuaInboundFlowConfiguration
     private ExampleSubscriberService exampleSubscriberService;
 
     @Bean
-    public Queue worksQueue()
+    public DirectMessageListenerContainer workListenerContainer()
     {
-        return QueueBuilder
-                .durable(MUTUAS_QUEUE_NAME)
-                .build();
-    }
-
-    @Bean
-    public SimpleMessageListenerContainer workListenerContainer()
-    {
-        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
-        container.setQueues(worksQueue());
-        container.setConcurrentConsumers(2);
+        DirectMessageListenerContainer container = new DirectMessageListenerContainer(connectionFactory);
+        container.addQueueNames(MUTUAS_QUEUE_NAME);
+        container.setConsumersPerQueue(2);
         return container;
     }
 

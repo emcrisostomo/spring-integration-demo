@@ -12,6 +12,6 @@ public class ExampleSubscriberService
 
     public void handleExampleMessage(Message<?> message)
     {
-        logger.info(String.format("Message received from RabbitMQ with payload: %s", message.getPayload()));
+        logger.info("Message received from RabbitMQ queue with payload: {}", message.getPayload());
     }
 }
