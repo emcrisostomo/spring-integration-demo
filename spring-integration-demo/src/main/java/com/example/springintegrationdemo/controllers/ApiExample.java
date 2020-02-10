@@ -20,7 +20,7 @@ public class ApiExample
     @PostMapping("/create-message")
     public ResponseEntity<Void> createMessage(@RequestParam("message") String message)
     {
-        logger.info(String.format("Message: %s", message));
+        logger.info("Message: {}", message);
         gateway.sendMessage(message);
         return ResponseEntity.ok().build();
     }
