@@ -12,6 +12,8 @@ import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.Transformers;
 
+import static com.example.springintegrationrabbitmqdemo.integration.Channels.*;
+
 @Configuration
 public class ApiMutuaOutboundFlowConfiguration
 {
@@ -21,13 +23,13 @@ public class ApiMutuaOutboundFlowConfiguration
     @Bean
     public DirectExchange mutuasInputExchange()
     {
-        return new DirectExchange(Channels.MUTUAS_INPUT_QUEUE_NAME, true, false);
+        return new DirectExchange(MUTUAS_INPUT_QUEUE_NAME, true, false);
     }
 
     @Bean
     public Queue mutuasQueue()
     {
-        return new Queue(Channels.MUTUAS_QUEUE_NAME, true);
+        return new Queue(MUTUAS_QUEUE_NAME, true);
     }
 
     @Bean
@@ -40,9 +42,9 @@ public class ApiMutuaOutboundFlowConfiguration
     public IntegrationFlow apiMutuaInputFlow()
     {
         return IntegrationFlows
-                .from(Channels.API_MUTUA_INPUT_CHANNEL)
+                .from(API_MUTUA_INPUT_CHANNEL)
                 .transform(Transformers.toJson())
-                .handle(Amqp.outboundAdapter(rabbitConfig.worksRabbitTemplate()))
+                .handle(Amqp.outboundAdapter(rabbitConfig.apiMutuaRabbitTemplate()))
                 .get();
     }
 }
