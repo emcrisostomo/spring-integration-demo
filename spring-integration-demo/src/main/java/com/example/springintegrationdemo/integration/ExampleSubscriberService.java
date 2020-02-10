@@ -12,16 +12,16 @@ public class ExampleSubscriberService
 
     public void handleExampleMessage(Message<?> message)
     {
-        logger.info(String.format("Message received with payload: %s", message.getPayload()));
+        logger.info("Message received with payload: {}", message.getPayload());
     }
 
     public void handleOutputMessage(Message<?> message)
     {
-        logger.info(String.format("Message received with payload on output channel: %s", message.getPayload()));
+        logger.info("Message received with payload on output channel: {}", message.getPayload());
     }
 
     public void handleOutputQueueMessage(Message<?> message)
     {
-        logger.info(String.format("Message received on output queue: %s", message.getPayload()));
+        logger.info("Message received on output queue: {}", message.getPayload());
     }
 }
