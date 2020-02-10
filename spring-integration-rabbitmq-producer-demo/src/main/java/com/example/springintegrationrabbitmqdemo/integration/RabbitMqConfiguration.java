@@ -15,7 +15,7 @@ public class RabbitMqConfiguration
     private ConnectionFactory rabbitConnectionFactory;
 
     @Bean
-    public RabbitTemplate worksRabbitTemplate()
+    public RabbitTemplate apiMutuaRabbitTemplate()
     {
         RabbitTemplate r = new RabbitTemplate(rabbitConnectionFactory);
         r.setExchange(MUTUAS_INPUT_QUEUE_NAME);
