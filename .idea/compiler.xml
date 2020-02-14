@@ -7,15 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-integration-rabbitmq-consumer-demo" />
-        <module name="spring-integration-demo (2)" />
-        <module name="spring-integration-demo" />
         <module name="spring-integration-rabbitmq-producer-demo" />
+        <module name="spring-integration-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="spring-integration-demo" target="1.8" />
-      <module name="spring-integration-demo (1)" target="1.5" />
-      <module name="spring-integration-demo (2)" target="1.8" />
       <module name="spring-integration-rabbitmq-consumer-demo" target="1.8" />
       <module name="spring-integration-rabbitmq-demo" target="1.5" />
       <module name="spring-integration-rabbitmq-producer-demo" target="1.8" />
@@ -24,8 +21,6 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="spring-integration-demo" options="-parameters" />
-      <module name="spring-integration-demo (1)" options="-parameters" />
-      <module name="spring-integration-demo (2)" options="-parameters" />
       <module name="spring-integration-rabbitmq-consumer-demo" options="-parameters" />
       <module name="spring-integration-rabbitmq-producer-demo" options="-parameters" />
     </option>
