@@ -20,6 +20,7 @@ public class RabbitMqConfiguration
         RabbitTemplate r = new RabbitTemplate(rabbitConnectionFactory);
         r.setExchange(MUTUAS_INPUT_QUEUE_NAME);
         r.setConnectionFactory(rabbitConnectionFactory);
+        r.setChannelTransacted(true);
         return r;
     }
 }
