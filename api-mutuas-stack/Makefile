@@ -6,3 +6,6 @@ deploy-on-kubernetes: | kubernetes
 
 undeploy-on-kubernetes: | kubernetes
 	kubectl delete -f kubernetes/
+
+docker-compose kubernetes:
+	$(error Required directory is missing: $@)
