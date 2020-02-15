@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../docker-compose/docker-compose.yml
+    kompose.version: 1.20.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: cola-mutuas
+  name: cola-mutuas
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../docker-compose/docker-compose.yml
+        kompose.version: 1.20.0 ()
+      creationTimestamp: null
+      labels:
+        io.kompose.service: cola-mutuas
+    spec:
+      containers:
+      - env:
+        - name: RABBITMQ_DEFAULT_PASS
+          value: admin
+        - name: RABBITMQ_DEFAULT_USER
+          value: admin
+        image: rabbitmq:management
+        name: cola-mutuas
+        ports:
+        - containerPort: 5672
+        resources: {}
+      restartPolicy: Always
+status: {}
