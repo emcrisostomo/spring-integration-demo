@@ -5,5 +5,8 @@ docker-build: | $(CONSUMER_DEMO_PATH) $(PRODUCER_DEMO_PATH)
 	$(MAKE) -C $(CONSUMER_DEMO_PATH) docker-build
 	$(MAKE) -C $(PRODUCER_DEMO_PATH) docker-build
 
+use-latest-versions:
+	./mvnw versions:use-latest-versions
+
 $(CONSUMER_DEMO_PATH) $(PRODUCER_DEMO_PATH):
 	$(error Required path cannot be found: $@)
