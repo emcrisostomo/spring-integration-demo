@@ -1,12 +1,22 @@
 CONSUMER_DEMO_PATH=spring-integration-rabbitmq-consumer-demo
 PRODUCER_DEMO_PATH=spring-integration-rabbitmq-producer-demo
 
+.PHONY: docker-build
 docker-build: | $(CONSUMER_DEMO_PATH) $(PRODUCER_DEMO_PATH)
 	$(MAKE) -C $(CONSUMER_DEMO_PATH) docker-build
 	$(MAKE) -C $(PRODUCER_DEMO_PATH) docker-build
 
-use-latest-versions:
-	./mvnw versions:use-latest-versions
+.PHONY: display-dependency-updates
+display-dependency-updates:
+	./mvnw versions:display-dependency-updates
+
+.PHONY: display-plugin-updates
+display-plugin-updates:
+	./mvnw versions:display-plugin-updates
+
+.PHONY: display-property-updates
+display-property-updates:
+	./mvnw versions:display-property-updates
 
 $(CONSUMER_DEMO_PATH) $(PRODUCER_DEMO_PATH):
 	$(error Required path cannot be found: $@)
