@@ -1,0 +1,29 @@
+version: '3.0'
+
+services:
+  consumer:
+    image: spring-integration-rabbitmq-consumer-demo:0.0.1-SNAPSHOT
+    depends_on:
+      - cola-mutuas
+    deploy:
+      replicas: 2
+
+  producer:
+    image: spring-integration-rabbitmq-producer-demo:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8080"
+    depends_on:
+      - cola-mutuas
+    deploy:
+      replicas: 2
+    labels:
+      kompose.service.type: LoadBalancer
+
+  cola-mutuas:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+
