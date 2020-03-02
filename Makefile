@@ -1,10 +1,10 @@
 CONSUMER_DEMO_PATH=spring-integration-rabbitmq-consumer-demo
 PRODUCER_DEMO_PATH=spring-integration-rabbitmq-producer-demo
 
-.PHONY: docker-build
-docker-build: | $(CONSUMER_DEMO_PATH) $(PRODUCER_DEMO_PATH)
-	$(MAKE) -C $(CONSUMER_DEMO_PATH) docker-build
-	$(MAKE) -C $(PRODUCER_DEMO_PATH) docker-build
+.PHONY: docker-build docker-daemon-build
+docker-build docker-daemon-build: | $(CONSUMER_DEMO_PATH) $(PRODUCER_DEMO_PATH)
+	$(MAKE) -C $(CONSUMER_DEMO_PATH) $@
+	$(MAKE) -C $(PRODUCER_DEMO_PATH) $@
 
 .PHONY: display-dependency-updates
 display-dependency-updates:
