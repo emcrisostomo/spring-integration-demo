@@ -6,9 +6,9 @@ import org.springframework.messaging.Message;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FirstExampleSubscriberService
+public class SecondExampleSubscriberService
 {
-    private static final Logger logger = LoggerFactory.getLogger(FirstExampleSubscriberService.class);
+    private static final Logger logger = LoggerFactory.getLogger(SecondExampleSubscriberService.class);
 
     public void handleExampleMessage(Message<?> message)
     {

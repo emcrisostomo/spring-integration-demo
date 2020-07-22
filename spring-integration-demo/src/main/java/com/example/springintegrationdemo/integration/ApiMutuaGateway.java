@@ -7,5 +7,5 @@ import org.springframework.integration.annotation.MessagingGateway;
 public interface ApiMutuaGateway
 {
     @Gateway
-    public void sendMessage(String message);
+    void sendMessage(String message);
 }

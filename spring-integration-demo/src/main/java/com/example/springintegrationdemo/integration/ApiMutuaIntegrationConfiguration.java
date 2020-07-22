@@ -1,6 +1,5 @@
 package com.example.springintegrationdemo.integration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.dsl.IntegrationFlow;
@@ -12,9 +11,6 @@ import org.springframework.messaging.MessageChannel;
 @Configuration
 public class ApiMutuaIntegrationConfiguration
 {
-    @Autowired
-    private FirstExampleSubscriberService firstExampleSubscriberService;
-
     @Bean("apiMutuaInputChannel")
     public MessageChannel apiMutuaInputChannel()
     {
@@ -53,7 +49,7 @@ public class ApiMutuaIntegrationConfiguration
     }
 
     @Bean
-    public IntegrationFlow apiMutuaExampleSubflow()
+    public IntegrationFlow apiMutuaExampleSubflow(FirstExampleSubscriberService firstExampleSubscriberService)
     {
         return IntegrationFlows
                 .from(exampleSubscriber())
@@ -62,20 +58,20 @@ public class ApiMutuaIntegrationConfiguration
     }
 
     @Bean
-    public IntegrationFlow apiMutuaOutputSubflow()
+    public IntegrationFlow apiMutuaOutputSubflow(SecondExampleSubscriberService secondExampleSubscriberService)
     {
         return IntegrationFlows
                 .from(exampleSubscriber())
-                .handle(firstExampleSubscriberService::handleOutputMessage)
+                .handle(secondExampleSubscriberService::handleExampleMessage)
                 .get();
     }
 
     @Bean
-    public IntegrationFlow apiMutuaOutputQueueSubflow()
+    public IntegrationFlow apiMutuaOutputQueueSubflow(ThirdExampleSubscriberService thirdExampleSubscriberService)
     {
         return IntegrationFlows
                 .from(outputQueue())
-                .handle(firstExampleSubscriberService::handleOutputQueueMessage,
+                .handle(thirdExampleSubscriberService::handleExampleMessage,
                         c -> c.poller(Pollers.fixedRate(10_000)))
                 .get();
     }

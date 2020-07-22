@@ -6,12 +6,12 @@ import org.springframework.messaging.Message;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FirstExampleSubscriberService
+public class ThirdExampleSubscriberService
 {
-    private static final Logger logger = LoggerFactory.getLogger(FirstExampleSubscriberService.class);
+    private static final Logger logger = LoggerFactory.getLogger(ThirdExampleSubscriberService.class);
 
     public void handleExampleMessage(Message<?> message)
     {
-        logger.info("Message received with payload: {}", message.getPayload());
+        logger.info("Message received on polled queue: {}", message.getPayload());
     }
 }
