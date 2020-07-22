@@ -13,7 +13,7 @@ import org.springframework.messaging.MessageChannel;
 public class ApiMutuaIntegrationConfiguration
 {
     @Autowired
-    private ExampleSubscriberService exampleSubscriberService;
+    private FirstExampleSubscriberService firstExampleSubscriberService;
 
     @Bean("apiMutuaInputChannel")
     public MessageChannel apiMutuaInputChannel()
@@ -57,7 +57,7 @@ public class ApiMutuaIntegrationConfiguration
     {
         return IntegrationFlows
                 .from(exampleSubscriber())
-                .handle(exampleSubscriberService::handleExampleMessage)
+                .handle(firstExampleSubscriberService::handleExampleMessage)
                 .get();
     }
 
@@ -66,7 +66,7 @@ public class ApiMutuaIntegrationConfiguration
     {
         return IntegrationFlows
                 .from(exampleSubscriber())
-                .handle(exampleSubscriberService::handleOutputMessage)
+                .handle(firstExampleSubscriberService::handleOutputMessage)
                 .get();
     }
 
@@ -75,7 +75,7 @@ public class ApiMutuaIntegrationConfiguration
     {
         return IntegrationFlows
                 .from(outputQueue())
-                .handle(exampleSubscriberService::handleOutputQueueMessage,
+                .handle(firstExampleSubscriberService::handleOutputQueueMessage,
                         c -> c.poller(Pollers.fixedRate(10_000)))
                 .get();
     }
