@@ -10,5 +10,5 @@ import static com.example.springintegrationrabbitmqdemo.integration.Channels.API
 public interface ApiMutuaGateway
 {
     @Gateway
-    public void sendMessage(String message);
+    void sendMessage(String message);
 }
