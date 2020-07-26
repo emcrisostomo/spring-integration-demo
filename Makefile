@@ -18,5 +18,9 @@ display-plugin-updates:
 display-property-updates:
 	./mvnw versions:display-property-updates
 
+.PHONY: maven-wrapper
+maven-wrapper:
+	./mvnw -N io.takari:maven:wrapper
+
 $(CONSUMER_DEMO_PATH) $(PRODUCER_DEMO_PATH):
 	$(error Required path cannot be found: $@)
