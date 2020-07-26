@@ -6,7 +6,6 @@ import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.amqp.dsl.Amqp;
@@ -19,12 +18,6 @@ import static com.example.springintegrationrabbitmqdemo.integration.Channels.MUT
 @Configuration
 public class ApiMutuaInboundFlowConfiguration
 {
-    @Autowired
-    private ConnectionFactory connectionFactory;
-
-    @Autowired
-    private ExampleSubscriberService exampleSubscriberService;
-
     @Bean
     public DirectExchange mutuasInputExchange()
     {
@@ -44,7 +37,7 @@ public class ApiMutuaInboundFlowConfiguration
     }
 
     @Bean
-    public SimpleMessageListenerContainer workListenerContainer()
+    public SimpleMessageListenerContainer workListenerContainer(ConnectionFactory connectionFactory)
     {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer(connectionFactory);
         container.addQueueNames(MUTUAS_QUEUE_NAME);
@@ -53,10 +46,11 @@ public class ApiMutuaInboundFlowConfiguration
     }
 
     @Bean
-    public IntegrationFlow inboundFlow()
+    public IntegrationFlow inboundFlow(ConnectionFactory connectionFactory,
+                                       ExampleSubscriberService exampleSubscriberService)
     {
         return IntegrationFlows.from(
-                Amqp.inboundAdapter(workListenerContainer()))
+                Amqp.inboundAdapter(workListenerContainer(connectionFactory)))
                 .handle(exampleSubscriberService::handleExampleMessage)
                 .get();
     }

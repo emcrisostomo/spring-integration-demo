@@ -1,7 +1,6 @@
 package com.example.springintegrationrabbitmqdemo.integration;
 
 import org.springframework.amqp.core.DirectExchange;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.amqp.dsl.Amqp;
@@ -15,9 +14,6 @@ import static com.example.springintegrationrabbitmqdemo.integration.Channels.MUT
 @Configuration
 public class ApiMutuaOutboundFlowConfiguration
 {
-    @Autowired
-    private RabbitMqConfiguration rabbitConfig;
-
     @Bean
     public DirectExchange mutuasInputExchange()
     {
@@ -25,7 +21,7 @@ public class ApiMutuaOutboundFlowConfiguration
     }
 
     @Bean
-    public IntegrationFlow apiMutuaInputFlow()
+    public IntegrationFlow apiMutuaInputFlow(RabbitMqConfiguration rabbitConfig)
     {
         return IntegrationFlows
                 .from(API_MUTUA_INPUT_CHANNEL)

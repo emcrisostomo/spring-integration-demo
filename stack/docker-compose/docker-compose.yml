@@ -21,8 +21,6 @@ services:
 
   cola-mutuas:
     image: rabbitmq:management
-    ports:
-      - "5672:5672"
     environment:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: admin
