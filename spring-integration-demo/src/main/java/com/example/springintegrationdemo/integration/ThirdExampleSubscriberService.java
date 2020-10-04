@@ -12,6 +12,6 @@ public class ThirdExampleSubscriberService
 
     public void handleExampleMessage(Message<?> message)
     {
-        logger.info("Message received on polled queue: {}", message.getPayload());
+        logger.info("Message received by subscriber 3 on polled queue: {}", message.getPayload());
     }
 }

@@ -12,6 +12,6 @@ public class SecondExampleSubscriberService
 
     public void handleExampleMessage(Message<?> message)
     {
-        logger.info("Message received with payload: {}", message.getPayload());
+        logger.info("Message received by subscriber 2 with payload: {}", message.getPayload());
     }
 }
