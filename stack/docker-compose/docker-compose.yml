@@ -15,7 +15,7 @@ services:
     depends_on:
       - cola-mutuas
     deploy:
-      replicas: 2
+      replicas: 1
     labels:
       kompose.service.type: LoadBalancer
 
