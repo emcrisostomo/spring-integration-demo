@@ -1,28 +1,34 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
     kompose.cmd: kompose convert -f ../docker-compose/docker-compose.yml
-    kompose.version: 1.20.0 ()
+    kompose.version: 1.21.0 ()
   creationTimestamp: null
   labels:
     io.kompose.service: consumer
   name: consumer
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      io.kompose.service: consumer
   strategy: {}
   template:
     metadata:
       annotations:
         kompose.cmd: kompose convert -f ../docker-compose/docker-compose.yml
-        kompose.version: 1.20.0 ()
+        kompose.version: 1.21.0 ()
       creationTimestamp: null
       labels:
         io.kompose.service: consumer
     spec:
       containers:
-      - image: spring-integration-rabbitmq-consumer-demo:0.0.1-SNAPSHOT
+      - image: localhost:5000/spring-integration-rabbitmq-consumer-demo:0.0.1-SNAPSHOT
+        imagePullPolicy: ""
         name: consumer
         resources: {}
       restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
 status: {}
