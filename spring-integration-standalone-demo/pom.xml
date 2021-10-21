@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>spring-integration-demo</artifactId>
+    <artifactId>spring-integration-standalone-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-integration-demo</name>
+    <name>spring-integration-standalone-demo</name>
     <description>Demo project for Spring Integration</description>
 
     <properties>

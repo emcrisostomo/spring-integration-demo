@@ -16,7 +16,7 @@
     </properties>
 
     <modules>
-        <module>spring-integration-demo</module>
+        <module>spring-integration-standalone-demo</module>
         <module>spring-integration-rabbitmq-producer-demo</module>
         <module>spring-integration-rabbitmq-consumer-demo</module>
     </modules>
