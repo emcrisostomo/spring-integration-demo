@@ -12,8 +12,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="spring-integration-demo" target="1.5" />
       <module name="spring-integration-rabbitmq-consumer-demo" target="1.8" />
-      <module name="spring-integration-rabbitmq-demo" target="1.5" />
       <module name="spring-integration-rabbitmq-producer-demo" target="1.8" />
       <module name="spring-integration-standalone-demo" target="1.8" />
     </bytecodeTargetLevel>
