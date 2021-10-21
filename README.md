@@ -1,1 +1,1 @@
-# spring-integration-rabbitmq-demo
+# spring-integration-demo
